@@ -19,9 +19,10 @@ import Badge from '@mui/material/Badge';
 import ChatIcon from '@mui/icons-material/Chat';
 import SendIcon from '@mui/icons-material/Send';
 import { useNavigate } from 'react-router-dom';
+import server from '../environment';
 
 
-const server_url = "http://localhost:8000";
+const server_url = server;
 
 var connections = {};
 const peerConfigConnections={
