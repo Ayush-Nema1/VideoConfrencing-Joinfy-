@@ -1,0 +1,98 @@
+.meetVideoContainer{
+    position: relative;
+    height: 100vh;
+    background-color: #161c21;
+}
+.meetUserVideo{
+    position: absolute;
+    bottom: 10vh;
+    
+     width: 20vw;
+    
+   
+    height: auto;
+   
+    border-radius: 30px;
+    object-fit: cover;
+    left : 0;   
+    
+    border: 2.5px solid #26e3cd;
+}
+.buttonContainer{
+    position: absolute;
+    width: 100vw;
+    bottom: 22px;
+    display: flex ;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap:10px
+}
+
+.buttonContainer svg{
+    font-size: 2.2rem;
+}
+.conferenceView{
+display: flex;
+padding: 15px;
+gap: 19px;
+}
+.conferenceView video{
+   
+    width: 20vw;
+    
+   
+    height: auto;
+   
+    border-radius: 30px;
+    object-fit: cover;
+    border: 2.5px solid #26e3cd;
+}
+.chatRoom h1{
+    color: #26e3cd;
+}
+.chatRoom{
+    position: absolute;
+    height: 90vh;
+    background:#1f272f ;
+    right: 0;
+    width: 30vw;
+     border-top-left-radius: 30px;
+     border-bottom-left-radius:30px ; 
+}
+.chatContainer{
+    position: relative;
+    height: 100%;
+
+}
+.chatingArea{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    
+    
+
+}
+.mymessage{
+    border: 1px solid #26e3cd;
+    background-color:#161c21 ;
+    width: 40%;
+    height: 70px;
+    border-radius: 20px;
+    margin: 15px;
+    color: white;
+}
+/* #1f272f */
+
+.chattingDisplay .mychatBox{
+background-color:#161c21;
+color:white;
+width: fit-content; 
+
+margin:5px;
+
+border-radius:14px;
+padding:3px 9px;
+border:1px solid #26e3cd;
+min-width:150px;
+}
