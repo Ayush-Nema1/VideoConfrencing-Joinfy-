@@ -22,7 +22,7 @@ export const AuthProvider = ({children}) =>{
                 username:username,
                 password:password
             })
-            if(request.status === HttpStatusCode.CREATED){
+            if(request.status === HttpStatusCode.Created){
                 return request.data.message;
             }
         }catch(err){
@@ -36,7 +36,7 @@ export const AuthProvider = ({children}) =>{
             password:password
           });
           console.log("LOGIN RESPONSE:", request.status, request.data);
-          if(request.status === HttpStatusCode.Ok){
+          if(request.status === HttpStatusCode.OK){
             localStorage.setItem("token",request.data.token);
             console.log("ok")
             return true;
