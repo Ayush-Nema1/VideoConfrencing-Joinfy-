@@ -407,7 +407,7 @@ let connectToSocketServer = ()=>{
                 getMedia() }}>Connect</Button>
 
             <div>
-                <video ref={localVideoref} autoPlay muted></video>
+                <video ref={localVideoref} autoPlay muted style={{width: "300px", objectFit: "cover",marginTop:"60px"}}></video>
             </div>
         </div> : <div className={styles.meetVideoContainer}>
                   
