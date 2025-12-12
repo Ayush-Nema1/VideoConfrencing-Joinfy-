@@ -20,6 +20,8 @@ import ChatIcon from '@mui/icons-material/Chat';
 import SendIcon from '@mui/icons-material/Send';
 import { useNavigate } from 'react-router-dom';
 import server from '../environment';
+import { useParams } from "react-router-dom";
+
 
 
 const server_url = server;
@@ -65,7 +67,7 @@ let routeTo = useNavigate();
       const videoRef = useRef([]);
 
       let[videos,setVideos] = useState([]);
-
+ const { url } = useParams(); 
     const getPermissions = async()=>{
         try{
         const videoPermission = await navigator.mediaDevices.getUserMedia({video:true})
@@ -233,13 +235,14 @@ let addMessage = (data,sender,socketIdSender)=>{
     
 let connectToSocketServer = ()=>{
     console.log("Connect function called!");
-    socketRef.current = io.connect(server_url,{secure:false});
+    socketRef.current = io(server_url);
+
      
     socketRef.current.on('signal',gotMessageFromServer);
 
     socketRef.current.on("connect",()=>{
         
-        socketRef.current.emit("join-call",window.location.href);
+        socketRef.current.emit("join-call",url);
         socketIdRef.current = socketRef.current.id;
         socketRef.current.on("chat-message",addMessage)
         socketRef.current.on("user-left",(id)=>{
