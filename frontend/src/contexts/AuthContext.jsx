@@ -12,7 +12,9 @@ const client = axios.create({
 export const AuthProvider = ({children}) =>{
     const authContext = useContext(AuthContext);
    
-    const [userData,setUserData] = useState(authContext);
+    const [userData, setUserData] = useState({
+        token: localStorage.getItem("token") || null
+    });
       
 
     const handleRegister = async(name,username,password)=>{
@@ -36,8 +38,11 @@ export const AuthProvider = ({children}) =>{
             password:password
           });
           console.log("LOGIN RESPONSE:", request.status, request.data);
-          if(request.status === HttpStatusCode.OK){
+          if(request.status === HttpStatusCode.Ok){
             localStorage.setItem("token",request.data.token);
+            setUserData({
+                    token: request.data.token
+                });
             console.log("ok")
             return true;
           }
