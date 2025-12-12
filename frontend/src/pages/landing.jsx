@@ -1,8 +1,10 @@
 import React from 'react'
 import { Link,useNavigate } from 'react-router-dom';
+
 export default function LandingPage() {
  
     const router = useNavigate();
+      
   return (
     <div className='landingPageContainer'>
       <nav>
@@ -17,7 +19,7 @@ export default function LandingPage() {
                     }}  >Register</p>
           <div className="button">
             <p style={{fontSize: "20px"}}  onClick={() => {
-                        router("/meetyourfrienid8855")
+                        router("/auth")
 
                     }} >Login</p>
           </div>

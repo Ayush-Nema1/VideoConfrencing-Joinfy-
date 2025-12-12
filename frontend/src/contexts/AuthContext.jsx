@@ -1,5 +1,5 @@
 import axios from "axios";
-import {  createContext, useContext, useState } from "react";
+import {  createContext, useContext, useState,useEffect } from "react";
 
 import { HttpStatusCode } from "axios";
 import server from "../environment";
@@ -10,11 +10,19 @@ const client = axios.create({
 })
 
 export const AuthProvider = ({children}) =>{
-    const authContext = useContext(AuthContext);
+
    
-    const [userData, setUserData] = useState({
-        token: localStorage.getItem("token") || null
-    });
+    const [userData, setUserData] = useState({ token: undefined });
+
+    
+    useEffect(() => {
+        const savedToken = localStorage.getItem("token");
+        if (savedToken) {
+            setUserData({ token: savedToken });
+        } else {
+            setUserData({ token: null });
+        }
+    }, []);
       
 
     const handleRegister = async(name,username,password)=>{
