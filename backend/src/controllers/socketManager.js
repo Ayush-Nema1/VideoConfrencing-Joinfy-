@@ -3,6 +3,8 @@ import { Server } from "socket.io";
 let connections = {};
 let messages = {};
 let timeOnline = {};
+let transcripts = {};
+
 
 export const connectToSocket = (server) => {
 const io = new Server(server,{
@@ -10,7 +12,7 @@ const io = new Server(server,{
         origin: "*",
         methods: ["GET" , "POST"],
         allowHeaders : ["*"],
-        credential : true
+        credentials : true
      }
 });
 
@@ -19,13 +21,28 @@ const io = new Server(server,{
 
   io.on("connection", (socket) => {
    
-    console.log("something connected")
+     console.log("New connection:", socket.id);
+    
+    socket.onAny((event, ...args) => {
+        console.log("Event received:", event, args); // ← har event print hoga
+    });
     
     socket.on("join-call", (path) => {
+        console.log("=== JOIN CALL ===");
+    console.log("Path:", path);
+    console.log("Messages for this room:", messages[path]);
+    console.log("Transcripts for this room:", transcripts[path]);
+      socket.room = path;
       if (connections[path] === undefined) {
         connections[path] = [];
       }
       connections[path].push(socket.id);
+
+if(transcripts[path] && transcripts[path].length > 0){
+ console.log("Sending old transcript:", transcripts[path])
+ io.to(socket.id).emit("previous-transcripts", transcripts[path])
+}
+console.log(transcripts);
       timeOnline[socket.id] = new Date();
 
       for (let a = 0; a < connections[path].length; a++) {
@@ -39,13 +56,14 @@ const io = new Server(server,{
     messages[path] = [];    // initialize empty array
 } else {
     // send old messages
-    for (let a = 0; a < messages[path].length; ++a) {
-        io.to(socket.id).emit("chat-messages", {
-            data: messages[path][a].data,
-            sender: messages[path][a].sender,
-            socketId: messages[path][a]["socket-id-sender"]
-        });
-    }
+for (let a = 0; a < messages[path].length; ++a) {
+    io.to(socket.id).emit(
+        "chat-message",
+        messages[path][a].data,           // data
+        messages[path][a].sender,          // sender
+        messages[path][a]["socket-id-sender"]  // socketId
+    );
+}
 }
 
     });
@@ -78,7 +96,25 @@ const io = new Server(server,{
           io.to(elem).emit("chat-message", data, sender, socket.id);
         });
       }
+
     });
+          socket.on("audio-transcript", (data) => {
+
+ const room = socket.room;
+
+ if(!transcripts[room]){
+   transcripts[room] = [];
+ }
+
+ transcripts[room].push({
+   sender: data.sender,
+   text: data.text,
+   time: new Date()
+ });
+
+ console.log("Transcript:", transcripts[room]);
+
+});
 
     socket.on("disconnect", () => {
       var diffTime = Math.abs(timeOnline[socket.id] - new Date());
