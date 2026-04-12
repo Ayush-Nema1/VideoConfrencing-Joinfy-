@@ -1,137 +1,260 @@
-.landingPageContainer {
-  width: 100vw;
-  height: 100vh;
-  background-color: rgb(16, 23, 40);
-  color: white;
-}
-.landingPageContainer nav {
-  padding-inline: 1.2rem;
-  padding-block: 1.6rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.landingPageContainer nav h2 {
-  font-size: 1.8rem;
-  font-weight: 500;
-}
-.landingPageContainer nav .navlist {
-  cursor: pointer;
-  display: flex;
-  gap: 1.6rem;
-}
-.landingMainContainer {
-  display: flex;
-  justify-content: space-between;
-  padding-inline: 3rem;
-  height: 80vh;
-  align-items: center;
-}
-.landingMainContainer > div:nth-child(1) {
-  font-size: 2.2rem;
-}
-.landingMainContainer > div:nth-child(1) div[role="button"] {
-  background:  linear-gradient(90deg, #5527f9, #ff196d);
-  width: 190px;
-  padding: 0.8rem;
-  border-radius: 20px;
-  margin-top: 1.9rem;
-  text-align: center;
-}
-.leftmain{
-  padding: 20px;
-    margin-left: 10px;
-}
-.landingMainContainer > div:nth-child(1) div[role="button"] a {
-  text-decoration: none;
-  color: white;
-  font-size: 1.7rem;
-}
-.landingMainContainer > div:nth-child(2) img {
-  height: 70vh;
-  width: auto;
-}
-.rightimg{
-  padding: 30x;
-  height: 75%;
- margin-right: 40px;
-  border-radius: 50%;
-   box-shadow:0px 0px 60px 30px rgba(92, 92, 243, 0.6);
-}
-.myh2{
-  color: aqua;
-  margin-bottom: 15px;
-}
-.navBar{
-  color: white;
-  padding: 15px;
-  display: flex;
-  justify-content: space-between;
-  height: 60px;
-  
-  
-}
+/* ============================= */
+/* BASE */
+/* ============================= */
 .Home{
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   background-color:#161c21 ;
+  color:white;
+
+  display:flex;
+  flex-direction:column;
 }
+/* ============================= */
+/* NAVBAR */
+/* ============================= */
+
+.navBar{
+  height:70px;
+
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+
+  z-index:1000;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  padding:0 5%;
+
+  background:rgba(22,28,33,0.85);
+  backdrop-filter: blur(10px);
+
+  box-shadow:0 4px 20px rgba(0,0,0,0.3);
+}
+
 .Home .navBar .C1 h3{
   color: aqua;
-  font-size: 40px;
+  font-size: 32px;
+  font-weight:600;
 }
+
+.C2{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+
+/* ============================= */
+/* MAIN CONTAINER */
+/* ============================= */
+
 .mainContainer{
-height: 80vh;
-display: flex;
-justify-content: center;
+margin-top: 90px;
+flex:1;
+
+display:flex;
+justify-content: space-between;
 align-items: center;
-padding-top: 130px;
+
+padding: 0 5%;
+gap:40px;
+
 }
+
+
+/* ============================= */
+/* LEFT */
+/* ============================= */
+
 .left{
-  width: 50%;
- 
+  flex:1;
+  max-width:600px;
+
 }
 .right{
-  width: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
- 
-}
-.right img{
-  
-  height:auto;
-  width : 50%;
-}
-.mainContainer .left input{
-  height: 60px;
-  background-color: #161c21;
-  border: 2px solid rgb(18, 124, 124, 1);
-  border-radius: 13px;
-  color: white;
-  font-weight: 300;
-  padding: 20px;
-}
-.left input::placeholder {
-  color: #ffffff;   /* apna color */
-  opacity: 0.7;    /* important for some browsers */
+  flex:1;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
 .headings{
-  padding: 22px;
-  
+  margin-bottom:30px;
 }
+
+.headings h2{
+  color:#B388FF;
+  font-size: clamp(2.5rem,4vw,3.5rem);
+  line-height:1.1;
+}
+
+.headings h4{
+  font-size: clamp(1.1rem,2vw,1.6rem);
+  margin-top:10px;
+}
+
+
+/* ============================= */
+/* INPUT */
+/* ============================= */
+
 .in{
-  padding: 30px;
+  display:flex;
+  align-items:center;
+  gap:15px;
+  flex-wrap:wrap;
 }
-#Btnn{
-  border: 2px solid rgba(18, 124, 124, 1);
-  border-radius:10px;
-  color: aqua;
-  font-weight:500;
-   padding:10px;
-  margin: 7px;
+
+.mainContainer .left input{
+
+  height:55px;
+  flex:1;
+  min-width:250px;
+
+  background-color:#161c21;
+  border:2px solid rgb(18,124,124);
+
+  border-radius:13px;
+
+  color:white;
+  padding:0 20px;
+
 }
-#Btnn:hover{
-  background-color: rgb(12, 169, 169);
+
+.left input::placeholder {
   color: #ffffff;
+  opacity: 0.7;
+}
+
+
+/* ============================= */
+/* BUTTON */
+/* ============================= */
+
+#Btnn{
+  border:2px solid rgba(18,124,124,1);
+  border-radius:10px;
+
+  color:aqua;
+  font-weight:500;
+
+  padding:10px 18px;
+
+  transition:.2s ease;
+}
+
+#Btnn:hover{
+  background-color:rgb(12,169,169);
+  color:#ffffff;
+}
+
+
+/* ============================= */
+/* RIGHT */
+/* ============================= */
+
+.right{
+  flex:1;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.right img{
+  width:100%;
+  max-width:420px;
+  height:auto;
+}
+
+
+/* ============================= */
+/* TABLET */
+/* ============================= */
+
+@media(max-width:1000px){
+
+.mainContainer{
+flex-direction:column;
+justify-content:center;
+text-align:center;
+}
+
+.left{
+display:flex;
+flex-direction:column;
+align-items:center;
+}
+
+.in{
+justify-content:center;
+}
+
+.right{
+margin-top:30px;
+}
+
+.right img{
+max-width:350px;
+}
+
+}
+
+
+/* ============================= */
+/* MOBILE */
+/* ============================= */
+
+@media(max-width:768px){
+
+.mainContainer{
+padding:100px 5% 40px 5%;
+}
+
+.Home .navBar .C1 h3{
+font-size:26px;
+}
+
+.headings h2{
+font-size:2rem;
+}
+
+.headings h4{
+font-size:1.2rem;
+}
+
+.right img{
+max-width:300px;
+}
+
+}
+
+
+/* ============================= */
+/* SMALL MOBILE */
+/* ============================= */
+
+@media(max-width:480px){
+
+.in{
+flex-direction:column;
+width:100%;
+}
+
+.mainContainer .left input{
+width:100%;
+}
+
+#Btnn{
+width:100%;
+justify-content:center;
+}
+
+.right img{
+max-width:250px;
+}
+
 }

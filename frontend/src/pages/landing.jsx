@@ -1,45 +1,81 @@
-import React from 'react'
-import { Link,useNavigate } from 'react-router-dom';
-
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+import "./landing.css";
 export default function LandingPage() {
- 
-    const router = useNavigate();
-      
+  const router = useNavigate();
+
   return (
-    <div className='landingPageContainer'>
-      <nav>
-        <div className="navHeader"> <h2 style={{color:"aqua",fontSize:"50px"}}> Joinfy </h2></div>
+    <div className="landingPageContainer">
+      {/* NAVBAR */}
+
+      <nav className="navBar">
+        <div className="navHeader">
+          <h2 className="logo">Joinfy</h2>
+        </div>
+
         <div className="navlist">
-          <p style={{fontSize: "20px"}} onClick={()=>{
-            router("/meetyourfrienid8855")
-          }}  > Join as Guest</p>
-          <p style={{fontSize: "20px"}}   onClick={() => {
-                        router("/auth")
+          <p
+            onClick={() => {
+              const meetingId = Math.floor(100000 + Math.random() * 900000)
+              router(`/youarejoinon/${meetingId}`);
+            }}
+          >
+            Join as Guest
+          </p>
 
-                    }}  >Register</p>
+          <p
+            onClick={() => {
+              router("/auth");
+            }}
+          >
+            Register
+          </p>
+
           <div className="button">
-            <p style={{fontSize: "20px"}}  onClick={() => {
-                        router("/auth")
-
-                    }} >Login</p>
+            <p
+              onClick={() => {
+                router("/auth");
+              }}
+            >
+              Login
+            </p>
           </div>
         </div>
       </nav>
+
+      {/* MAIN SECTION */}
+
       <div className="landingMainContainer">
-        <div className='leftmain'>
-          <h2 className='myh2'>Your people are one click away,</h2>
+        {/* LEFT */}
+
+        <div className="leftmain">
+          <h2 className="myh2">Your people are one click away,</h2>
+
           <h4>Bring everyone together with one click.</h4>
-          
-          <div role="button" onClick={()=>{
-            router("meetyourfrienid8855")
-          }} >
-            <Link >Get Started</Link>
+
+          <div
+            className="getStartedBtn"
+            role="button"
+            onClick={() => {
+              const meetingId = Math.floor(100000 + Math.random() * 900000)
+router(`/youarejoinon/${meetingId}`);
+            }}
+          >
+            <Link>Get Started</Link>
           </div>
         </div>
-        <div className='rightimg'>
-          <img src="/Videocall-bro.png" className = "setshadow"alt="" srcset="" />
+
+        {/* RIGHT */}
+
+        <div className="rightimg">
+            <div className="wave"></div>
+          <img
+            src="/Videocall-bro.png"
+            className="setshadow"
+            alt="video call"
+          />
         </div>
       </div>
     </div>
-  )
+  );
 }

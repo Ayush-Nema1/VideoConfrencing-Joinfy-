@@ -1,5 +1,5 @@
 import './App.css'
-import {Route, BrowserRouter as Router,Routes} from 'react-router'
+import {Route, BrowserRouter as Router, Routes} from 'react-router-dom'
 import LandingPage from './pages/landing'
 import Authentication from './pages/authentication'
 import { AuthProvider } from './contexts/AuthContext'
@@ -25,9 +25,9 @@ function App() {
                   <History/>
                 </ProtectedRoute>
 }/>
-      <Route path='/:url' element={<ProtectedRoute>
+      <Route path='/youarejoinon/:id' element={
                   <Videomeet/>
-                </ProtectedRoute>
+               
 }/>
      </Routes>
    

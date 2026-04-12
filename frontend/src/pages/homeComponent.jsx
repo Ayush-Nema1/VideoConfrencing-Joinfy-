@@ -15,7 +15,7 @@ const [meetingCode , setmeetingCode] = useState("");
 const {addToUserHistory} = useContext(AuthContext);
 let handleJoinVideoCall = async ()=>{
   await addToUserHistory(meetingCode)
-     navigate(`/${meetingCode}`);
+    navigate(`/youarejoinon/${meetingCode}`);
 }
 
   return (
