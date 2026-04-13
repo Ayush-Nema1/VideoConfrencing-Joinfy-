@@ -23,7 +23,7 @@ import PrivateNotes from '../components/Notes';
 
 
 const server_url = server;
-const GEMINI_API_KEY = "AIzaSyCvP2d1-wjxCdVBbEZJEuKfZrCY1gaR_o0";
+const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY;;
 var connections = {};
 const peerConfigConnections = {
     "iceServers": [{ "urls": "stun:stun.l.google.com:19302" }]
