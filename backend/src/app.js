@@ -29,7 +29,7 @@ const start = async()=>{
 
     server.listen(app.get("port"),()=>{
 
-        console.log("listen on port 8000");
+       
     });
 }
 start();

@@ -28,10 +28,7 @@ const io = new Server(server,{
     });
     
     socket.on("join-call", (path) => {
-        console.log("=== JOIN CALL ===");
-    console.log("Path:", path);
-    console.log("Messages for this room:", messages[path]);
-    console.log("Transcripts for this room:", transcripts[path]);
+        
       socket.room = path;
       if (connections[path] === undefined) {
         connections[path] = [];
@@ -39,10 +36,9 @@ const io = new Server(server,{
       connections[path].push(socket.id);
 
 if(transcripts[path] && transcripts[path].length > 0){
- console.log("Sending old transcript:", transcripts[path])
  io.to(socket.id).emit("previous-transcripts", transcripts[path])
 }
-console.log(transcripts);
+
       timeOnline[socket.id] = new Date();
 
       for (let a = 0; a < connections[path].length; a++) {
@@ -138,6 +134,8 @@ for (let a = 0; a < messages[path].length; ++a) {
 
             if (connections[key].length === 0) {
               delete connections[key];
+               delete transcripts[key];  
+                    delete messages[key]; 
             }
           }
         }

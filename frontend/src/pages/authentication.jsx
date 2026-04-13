@@ -47,7 +47,7 @@ const [message, setMessage] = React.useState("");
             if (formState === 0) {
 
                 let result = await handleLogin(username, password)
-              console.log("Login result:", result);
+              
                 if(result){
                 console.log("ho ok")
                 navigate('/home');
